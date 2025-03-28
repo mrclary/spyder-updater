@@ -70,13 +70,15 @@ jobs:
 
       - name: Environment Variables
         run: |
-          DISTDIR=${GITHUB_WORKSPACE}/dist
+          export DISTDIR=${GITHUB_WORKSPACE}/dist
           echo "DISTDIR=$DISTDIR" >> $GITHUB_ENV
 
-          CONDA_BLD_PATH=${RUNNER_TEMP}/conda-bld
+          export CONDA_BLD_PATH=${RUNNER_TEMP}/conda-bld
           echo "CONDA_BLD_PATH=$CONDA_BLD_PATH" >> $GITHUB_ENV
 
           env | sort
+
+          ls -al
 
       - name: Build spyder-updater Conda Package
         run: |
